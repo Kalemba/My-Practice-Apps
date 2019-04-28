@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RectangleStructExample
+{
+    struct Rectangle
+    {
+        private double width;
+        private double height;
+
+        private double Perimeter()
+        {
+            return 2 * (width + height);
+        }
+        private double Surface()
+        {
+            return width * height;
+        }
+        public void ShowRectangle()
+        {
+            Console.WriteLine("Rectangle height: {0}, width: {1}, surface: {2}, perimeter: {3}.", height, width, Surface(), Perimeter());
+        }
+        public static double CompareSurfaces(Rectangle[] inputArr)
+        {
+            double max = 0;
+            for (int i = 0; i < inputArr.Length; i++)
+                if (inputArr[i].Surface() > max)
+                    max = inputArr[i].Surface();
+            return max;
+        }
+        public Rectangle(double width, double height)
+        {
+            this.width = width;
+            this.height = height;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Rectangle[] p1 = { new Rectangle(4, 5), new Rectangle(10, 2), new Rectangle(4, 3), new Rectangle(11, 12) };
+            foreach (Rectangle p in p1)
+                p.ShowRectangle();
+            Console.WriteLine("Largest surface is {0}.", Rectangle.CompareSurfaces(p1));
+            Console.ReadKey();
+        }
+    }
+}
