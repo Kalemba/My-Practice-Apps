@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string stringToCheck = "Kiedy idzie się po miód z balonikiem, to trzeba się starać, żeby pszczoły nie wiedziały, po co się idzie – odpowiedział Puchatek";
+            List<string> words = new List<string>();
+            string singleWord = "";
+
+            // I write my own code to split string to words instead useing method "Split". Split by ' ' ',' '-' chars.
+            for (int i = 0; i < stringToCheck.Length; i++)
+            {
+                if (stringToCheck[i] != ' ' && stringToCheck[i] != ',' && stringToCheck[i] != '-')
+                {
+                    singleWord += stringToCheck[i];
+                }
+
+                else if (singleWord != "")
+                {
+                    words.Add(singleWord);
+                    singleWord = "";
+                }
+                    
+
+            }
+
+            int[] flag = new int[words.Count];
+            int counter;
+            for (int k = 0; k < words.Count; k++)
+            {
+                if (flag[k] == 0)
+                {
+                    counter = 0;
+                    for (int m = k; m < words.Count; m++)
+                    {
+                        if (words[k] == words[m])
+                        {
+                            counter++;
+                            flag[m] = 1;
+                        }
+
+                    }
+                    if (counter > 1) Console.WriteLine(words[k] + " - {0}", counter);
+                }
+
+
+            }
+            Console.ReadKey();
+        }
+    }
+}
