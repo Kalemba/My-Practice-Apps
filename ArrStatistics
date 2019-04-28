@@ -19,8 +19,8 @@ namespace ArrStatistics
                 Arr[i] = Convert.ToInt32(Console.ReadLine());
             }
             Console.WriteLine("Average is {0}", Arr.Average());
-            Console.WriteLine("Maximum is {0} and it is {1} position in array.", Arr.Max(), Array.IndexOf(Arr, Arr.Max()) + 1);
-            Console.WriteLine("Minimum is {0} and it is {1} position in array.", Arr.Min(), Array.IndexOf(Arr, Arr.Min()) + 1);
+            Console.WriteLine("Maximum is {0} and it is on {1} position in array.", Arr.Max(), Array.IndexOf(Arr, Arr.Max()) + 1);
+            Console.WriteLine("Minimum is {0} and it is on {1} position in array.", Arr.Min(), Array.IndexOf(Arr, Arr.Min()) + 1);
             
             int c = 0;            
             foreach (int x in Arr)
