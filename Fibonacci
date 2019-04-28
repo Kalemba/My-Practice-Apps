@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TheNthExpressionFibonacci
+{
+    class Program
+    {
+        static long FibonacciRecursion(long input)
+        {
+            if (input <= 1)
+                return input;
+            else
+                return (FibonacciRecursion(input - 1) + FibonacciRecursion(input - 2));
+        }
+        static long FibonacciIteratively(long input)
+        {
+            if (input <= 1)
+                return input;
+            else
+            { 
+                long[] FibonacciArr = new long[input + 1];
+                FibonacciArr[0] = 0;
+                FibonacciArr[1] = 1;
+                for (int i = 2; i <= input; i++)
+                {
+                    FibonacciArr[i] = FibonacciArr[i - 1] + FibonacciArr[i - 2];
+                }
+            return FibonacciArr[input];
+            }
+        }
+
+        static void Main(string[] args)
+        {
+
+            long nthExpression = Convert.ToInt32(Console.ReadLine());
+
+            while(nthExpression > 92){ 
+                    Console.WriteLine("The 93th and highers expressions of Fibonacci Sequence are to big for \"long\" type. Try smaller number.");
+                    nthExpression = Convert.ToInt32(Console.ReadLine());
+            }
+
+            DateTime timeToCompare = DateTime.Now;
+            Console.WriteLine(DateTime.Now.Subtract(timeToCompare));
+            timeToCompare = DateTime.Now;
+            long result = FibonacciIteratively(nthExpression);
+            Console.WriteLine("Iteration method result: {0} calculation time: {1}", result, DateTime.Now.Subtract(timeToCompare));
+
+            timeToCompare = DateTime.Now;
+            result = FibonacciRecursion(nthExpression); // Calculation for higher numbers can take a while.
+            Console.WriteLine("Recursion method result: {0} calculation time: {1}", result, DateTime.Now.Subtract(timeToCompare));
+
+
+
+            Console.ReadKey();
+        }
+    }
+}
