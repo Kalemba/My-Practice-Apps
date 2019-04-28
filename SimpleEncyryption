@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EncryptionGADERYPOLUKI
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            char[] encryptionKey = { 'g', 'a', 'd', 'e', 'r', 'y', 'p', 'o', 'l', 'u', 'k', 'i', 'G', 'A', 'D', 'E', 'R', 'Y', 'P', 'O', 'L', 'U', 'K', 'I' };
+            do
+            {
+                string inputString = Console.ReadLine();
+                string outputString = "";
+                bool codeFlag;
+                for (int i = 0; i < inputString.Length; i++)
+                {
+                    codeFlag = true;
+
+                    for (int j = 0; j < encryptionKey.Length; j += 2)
+                        if (inputString[i] == encryptionKey[j])
+                        {
+                            outputString += encryptionKey[j + 1];
+                            codeFlag = false;
+                        }
+
+                    for (int k = 1; k < encryptionKey.Length; k += 2)
+                        if (inputString[i] == encryptionKey[k])
+                        {
+                            outputString += encryptionKey[k - 1];
+                            codeFlag = false;
+                        }
+
+                    if (codeFlag)
+                        outputString += inputString[i];
+                }
+                Console.WriteLine(outputString);
+            } while (true);
+
+        }
+    }
+}
